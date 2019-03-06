@@ -53,7 +53,7 @@ module.exports = function(appPath = '') {
       'config',
       'environments',
       'development',
-      'server.json',
+      'server.json'
     ));
 
     if (process.env.NODE_ENV === 'development' && _.get(server, 'autoReload.enabled') === true) {
@@ -78,9 +78,9 @@ module.exports = function(appPath = '') {
             _.startsWith(file, '.') ||
             file === 'node_modules' ||
             file === 'plugins.json' ||
-            file === 'index.html'   ||
-            file === 'public'       ||
-            file === 'cypress'      ||
+            file === 'index.html' ||
+            file === 'public' ||
+            file === 'cypress' ||
             _.endsWith(file, '.db')
           ) {
             return;
@@ -99,17 +99,14 @@ module.exports = function(appPath = '') {
           switch (message) {
             case 'reload':
               strapi.log.info('The server is restarting\n');
-
-              _.forEach(cluster.workers, worker => worker.send('isKilled'));
+              worker.send('isKilled');
               break;
             case 'kill':
-              _.forEach(cluster.workers, worker => worker.kill());
-
+              worker.kill();
               cluster.fork();
               break;
             case 'stop':
-              _.forEach(cluster.workers, worker => worker.kill());
-
+              worker.kill();
               process.exit(0);
               break;
             default:
@@ -137,7 +134,7 @@ module.exports = function(appPath = '') {
           {
             appPath,
           },
-          afterwards,
+          afterwards
         );
       } else {
         return;
@@ -151,7 +148,7 @@ module.exports = function(appPath = '') {
       {
         appPath,
       },
-      afterwards,
+      afterwards
     );
   } catch (e) {
     logger.error(e);

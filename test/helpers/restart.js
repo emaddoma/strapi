@@ -27,6 +27,6 @@ module.exports = function (rq) {
 
     setTimeout(() => {
       ping();
-    }, 1000);
+    }, 2000);
   });
 };

@@ -1,6 +1,7 @@
 'use strict';
 
 // Dependencies.
+const path = require('path');
 const glob = require('glob');
 const utils = require('../utils');
 
@@ -16,6 +17,10 @@ module.exports = function() {
         }
 
         files.map(p => utils.setConfig(this, p, 'aggregate', this.loadFile));
+
+        files.forEach(f => {
+          console.log(f, require(path.resolve(this.config.appPath, f)));
+        });
 
         resolve();
       });

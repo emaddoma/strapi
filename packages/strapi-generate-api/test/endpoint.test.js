@@ -48,6 +48,7 @@ describe('Generate test APIs', () => {
       });
     }
   );
+
   test(
     'Create new tag API',
     async () => {
@@ -59,6 +60,7 @@ describe('Generate test APIs', () => {
       });
     }
   );
+
   test(
     'Create new category API',
     async () => {
@@ -70,6 +72,7 @@ describe('Generate test APIs', () => {
       });
     }
   );
+
   test(
     'Create new reference API',
     async () => {
@@ -81,6 +84,7 @@ describe('Generate test APIs', () => {
       });
     }
   );
+
   test(
     'Create new product API',
     async () => {
@@ -126,6 +130,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.name).toBe('tag1');
     }
   );
+
   test(
     'Create tag2',
     async () => {
@@ -145,6 +150,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.name).toBe('tag2');
     }
   );
+
   test(
     'Create tag3',
     async () => {
@@ -164,6 +170,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.name).toBe('tag3');
     }
   );
+
   test(
     'Create article1 without relation',
     async () => {
@@ -188,6 +195,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.tags.length).toBe(0);
     }
   );
+
   test(
     'Create article2 with tag1',
     async () => {
@@ -214,6 +222,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.tags[0].id).toBe(data.tags[0].id);
     }
   );
+
   test(
     'Update article1 add tag2',
     async () => {
@@ -240,6 +249,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.tags[0].id).toBe(data.tags[1].id);
     }
   );
+
   test(
     'Update article1 add tag1 and tag3',
     async () => {
@@ -265,6 +275,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.tags.length).toBe(3);
     }
   );
+
   test(
     'Update article1 remove one tag',
     async () => {
@@ -289,6 +300,7 @@ describe('Test manyToMany relation (article - tag) with Content Manager', () => 
       expect(body.tags.length).toBe(2);
     }
   );
+
   test(
     'Update article1 remove all tag',
     async () => {
@@ -348,6 +360,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.name).toBe('cat1');
     }
   );
+
   test(
     'Create cat2',
     async () => {
@@ -367,6 +380,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.name).toBe('cat2');
     }
   );
+
   test(
     'Create article1 with cat1',
     async () => {
@@ -392,6 +406,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(Array.isArray(body.tags)).toBeTruthy();
     }
   );
+
   test(
     'Update article1 with cat2',
     async () => {
@@ -417,6 +432,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(Array.isArray(body.tags)).toBeTruthy();
     }
   );
+
   test(
     'Create article2',
     async () => {
@@ -440,6 +456,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(Array.isArray(body.tags)).toBeTruthy();
     }
   );
+
   test(
     'Update article2 with cat2',
     async () => {
@@ -465,6 +482,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(Array.isArray(body.tags)).toBeTruthy();
     }
   );
+
   test(
     'Update cat1 with article1',
     async () => {
@@ -488,6 +506,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.name).toBe(entry.name);
     }
   );
+
   test(
     'Create cat3 with article1',
     async () => {
@@ -511,6 +530,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.name).toBe(entry.name);
     }
   );
+
   test(
     'Get article1 with cat3',
     async () => {
@@ -524,6 +544,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.category.id).toBe(data.categories[2].id)
     }
   );
+
   test(
     'Get article2 with cat2',
     async () => {
@@ -537,6 +558,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.category.id).toBe(data.categories[1].id)
     }
   );
+
   test(
     'Get cat1 without relations',
     async () => {
@@ -550,6 +572,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.articles.length).toBe(0);
     }
   );
+
   test(
     'Get cat2 with article2',
     async () => {
@@ -564,6 +587,7 @@ describe('Test oneToMany - manyToOne relation (article - category) with Content 
       expect(body.articles[0].id).toBe(data.articles[1].id);
     }
   );
+
   test(
     'Get cat3 with article1',
     async () => {
@@ -593,6 +617,7 @@ describe('Test oneToOne relation (article - reference) with Content Manager', ()
     await new Promise(resolve => setTimeout(resolve, 1000));
   }, 60000);
 
+
   test(
     'Create ref1',
     async () => {
@@ -611,6 +636,7 @@ describe('Test oneToOne relation (article - reference) with Content Manager', ()
       expect(body.name).toBe('ref1');
     }
   );
+
   test(
     'Create article1',
     async () => {
@@ -633,6 +659,7 @@ describe('Test oneToOne relation (article - reference) with Content Manager', ()
       expect(body.content).toBe(entry.content);
     }
   );
+
   test(
     'Update article1 with ref1',
     async () => {
@@ -657,6 +684,7 @@ describe('Test oneToOne relation (article - reference) with Content Manager', ()
       expect(body.reference.id).toBe(entry.reference);
     }
   );
+
   test(
     'Create article2 with ref1',
     async () => {
@@ -815,6 +843,7 @@ describe('Delete test APIs', () => {
       });
     }
   );
+
   test(
     'Delete tag API',
     async () => {
@@ -825,6 +854,7 @@ describe('Delete test APIs', () => {
       });
     }
   );
+
   test(
     'Delete category API',
     async () => {
@@ -835,6 +865,7 @@ describe('Delete test APIs', () => {
       });
     }
   );
+
   test(
     'Delete reference API',
     async () => {
@@ -845,6 +876,7 @@ describe('Delete test APIs', () => {
       });
     }
   );
+
   test(
     'Delete product API',
     async () => {
